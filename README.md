@@ -58,7 +58,7 @@ function C() {
 // 如果条件比较复杂，没问题
 export const youGuessWhatIamDoing = lazyLoadValue({
   value: "你猜我在干什么？", // 默认文案
-  optionalValue: "你猜猜看?", // 土味文案
+  optionalValue: "你猜我再弄啥嘞？", // 土味文案
   condition: () => {
     // do some logic
     return true; // or false
