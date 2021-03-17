@@ -1,45 +1,45 @@
-import React, { useState } from 'react'
-import logo from './logo.svg'
-import './App.css'
+import React, { useState } from "react";
+import "./App.css";
+import { AppTexts, Locale, youGuessWhatIamDoing } from "./constants";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
-    </div>
-  )
+function getItems(count: number) {
+  return new Array(count).fill("");
 }
 
-export default App
+/**
+ * 模拟模块
+ */
+function Block({ text = youGuessWhatIamDoing }: { text?: string }) {
+  return (
+    <div style={{ border: "1px solid red", margin: 5 }}>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+function App() {
+  const [locale, setLocale] = useState<Locale>("zh");
+  return (
+    <div className="App">
+      <h1>{AppTexts.title(locale)}</h1>
+      <p>{AppTexts.someText(locale)}</p>
+      {getItems(5).map((_, idx) => (
+        <Block key={idx} />
+      ))}
+      <Block text="你猜猜看？" />
+      <button
+        onClick={() => {
+          if (locale === "en") {
+            setLocale("zh");
+          } else {
+            setLocale("en");
+          }
+        }}
+      >
+        切换语言
+      </button>
+    </div>
+  );
+}
+
+export default App;
