@@ -28,7 +28,7 @@ function someText(locale: Locale) {
 }
 
 export const youGuessWhatIamDoing = lazyLoadValue({
-  value: "you guess what i am doing",
+  value: "你猜我在干什么？",
   optionalValue: "你猜猜看?",
   condition: true,
 });
