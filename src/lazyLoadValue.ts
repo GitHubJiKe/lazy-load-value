@@ -18,9 +18,9 @@ export default function lazyLoadValue<T, P>({
     return defaultValue;
   }
 
-  const isReal = isFunc(condition) ? condition() : condition;
+  const isOptional = isFunc(condition) ? condition() : condition;
 
-  if (isReal) {
+  if (isOptional) {
     return isFunc(optionalValue) ? optionalValue() : optionalValue;
   }
 
